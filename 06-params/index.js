@@ -5,8 +5,11 @@ import App from './modules/App'
 import About from './modules/About'
 import Repos from './modules/Repos'
 import Swiper from './modules/components/swiper';
-let Door=App;
+import APIList from  './modules/pages/apilist';
+
+//let Door=App;
 //let Door=Swiper;
+let  Door=APIList;
 render((
   <Router history={hashHistory}>
     <Route path="/" component={Door}>

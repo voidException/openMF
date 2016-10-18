@@ -2,7 +2,7 @@ import React from 'react';
 import NavLink from './NavLink';
 import Swiper from './components/swiper';
 import Navigator from './components/navigator';
-
+import Bottom from './components/Bottom';
 let width= document.documentElement.clientWidth;
 
 export  default class App  extends React.Component{
@@ -16,6 +16,9 @@ export  default class App  extends React.Component{
                 <Navigator />
                 <div>
                     <Swiper />
+                </div>
+                <div>
+                    <Bottom />
                 </div>
             </div>
         );
