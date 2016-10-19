@@ -39,18 +39,30 @@ export  default class APIList  extends React.Component{
 
     }
     onMouseOver(e){
-        console.log(e.target);
-        console.log(e.target.id);
+        console.log(e.target.innerHTML);
+        e.target.style.backgroundColor="red"
+        
+        //console.log(e.target.rowIndex);
         //e.style.backgroundColor="red";
         //let element=document.getElementById(e.target.id);
         //console.log(element)
         //element.style.backgroundColor="red";
+
+        // var tr1 = e.parentNode.parentNode;
+        // console.log(tr1.rowIndex);
+        // console.log(tr1.cells[0].childNodes[0].value); //获取的方法一
+       
+
     }
 
     onMouseOut(e){
        // let element=document.getElementById(e.target.id);
         //console.log(element)
         //element.style.backgroundColor="white";
+    }
+
+    onClick(element){
+           console.log(element.target.innerHTML)
     }
     render() {
        
@@ -69,7 +81,7 @@ export  default class APIList  extends React.Component{
                          {
                             this.state.apiListName.map((item,i)=> {
                                return(
-                                   <li key={i}  id={i} style={styles.ulli}  onMouseOver={this.onMouseOver.bind(this)}  onMouseOut={this.onMouseOut.bind(this)}>
+                                   <li key={i}  id={i} style={styles.ulli}  onMouseOver={this.onMouseOver.bind(this,event)}  onMouseOut={this.onMouseOut.bind(this)}>
                                        {item}
                                    </li>
                                );
@@ -81,7 +93,7 @@ export  default class APIList  extends React.Component{
                     <div style={styles.divRight}>
                          <h1>用户API</h1>
                          <div>提供了评价的添加和查询功能。拥有如下API调用权限的应用，严禁涉及好评有礼/返现/免单等诱导消费者违背客观真实原则进行评价的场景，一经发现，收回权限</div>
-                        <table style={{borderCollapse:'collapse'}}>
+                        <table style={{borderCollapse:'collapse'}}  id="tb1">
                             <thead>
                                 <tr  style={{border:'1px solid black',backgroundColor:'red'}}>
                                     <td style={styles.lefttd}>API列表</td>
@@ -94,8 +106,10 @@ export  default class APIList  extends React.Component{
                                 {
                                    this.state.apiContent.map((item,i)=> {
                                        return(
-                                        <tr  style={{border:'1px solid black'}}  key={i} id={i+100}  onMouseOver={this.onMouseOver.bind(this)}  onMouseOut={this.onMouseOut.bind(this)}>
-                                            <td  style={styles.lefttd}>{item.apiname}</td>
+                                        <tr  style={{border:'1px solid black'}}  key={i} id={i+100}       onMouseOut={this.onMouseOut.bind(this)}  >
+                                            <td  style={styles.lefttd}>
+                                                <div  onClick={this.onClick.bind(this)}  onMouseOver={this.onMouseOver.bind(this)}>{item.apiname}</div>
+                                            </td>
                                             <td  style={styles.middletd}>{item.apiType}</td>
                                             <td  style={styles.righttd}>{item.apiDesp}</td>
                                          </tr>
