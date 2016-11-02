@@ -4,7 +4,8 @@
 
 import React from 'react';
 import Swiper from './swiper';
-
+import { Link } from 'react-router'
+import NavLink from '../NavLink'
 let width= document.documentElement.clientWidth;
 export  default class Navigator  extends React.Component{
     constructor(props){
@@ -13,12 +14,14 @@ export  default class Navigator  extends React.Component{
 
     render() {
         return (
-                <div style={styles.divStyle}>
-                    <div>首页</div>
-                    <div>API</div>
-                    <div>文档</div>
-                    <div>商户中心</div>
-                </div>
+               <div>
+                    <div style={styles.divStyle}>
+                        <div>首页</div>
+                        <div>API</div>
+                        <div>文档</div>
+                        <div>商户中心</div>
+                    </div>
+               </div>
         );
     }
 }
