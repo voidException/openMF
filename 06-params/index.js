@@ -6,11 +6,12 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, hashHistory,browserHistory,IndexRoute,Redirect } from 'react-router'
 import App from './modules/App';
-import About from './modules/About'
-import Repos from './modules/Repos'
+import Doc from './modules/Doc'
+import Center from './modules/Center'
 import Swiper from './modules/components/swiper';
-import APIList from  './modules/pages/apilist';
-
+import Account from  './modules/components/account';
+import Application from  './modules/components/application';
+import Service from  './modules/components/service';
 let Door=App;
 //let Door=Swiper;
 //let  Door=APIList;
@@ -19,11 +20,13 @@ render((
     <Router history={hashHistory}>
         <Route path="/" component={Door}>
             <IndexRoute component={Swiper} />
-            <Route path="repos" component={Repos}/>
-            <Route path="hello" component={Swiper} />
-            <Route path="about" component={About}>
-                <Route path="/messages/:id" component={Swiper}/>
-                <Redirect from="messages/:id" to="/messages/:id" />
+            <Route path="headPage" component={Swiper} />
+            <Route path="doc" component={Doc} />
+            <Route path="center" component={Center}>
+                <IndexRoute component={Account} />
+                <Route path="account" component={Account}/>
+                <Route path="application" component={Application}/>
+                <Route path="service" component={Service}/>
             </Route>
         </Route>
     </Router>

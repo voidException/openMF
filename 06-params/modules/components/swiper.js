@@ -18,9 +18,9 @@ export  default class Swiper extends React.Component {
     }
 
     componentWillMount() {
-        console.log(this.props);
-        console.log(this.props.params.id);
-        console.log(this.props.location.query.bar);
+        //console.log(this.props);
+        //console.log(this.props.params.id);
+        //console.log(this.props.location.query.bar);
     }
 
     componentDidMount() {
@@ -28,23 +28,22 @@ export  default class Swiper extends React.Component {
         this.change();
     }
 
-    countDown() {
-        let time = maxTime;
-        this.timer = setInterval(() => {
-            this.setState({time: --time});
-            if (time === 0) {
-                clearInterval(this.timer);
-                //this.setState({controlVerifyCode:true});
-                console.log('end time count')
-            }
-
-        }, 1000);
-
-    }
+    //countDown() {
+    //    let time = maxTime;
+    //    this.timer = setInterval(() => {
+    //        this.setState({time: --time});
+    //        if (time === 0) {
+    //            clearInterval(this.timer);
+    //            //this.setState({controlVerifyCode:true});
+    //            console.log('end time count')
+    //        }
+    //    }, 1000);
+    //}
 
     componentWillUnmount(){
         //clearInterval(this.timer);
         clearInterval(this.swiper);
+        console.log('销毁this.swiper定时器');
     }
     change(){
         let tag=1;
@@ -78,13 +77,11 @@ export  default class Swiper extends React.Component {
     render() {
         return (
             <div id="wrap"   style={styles.wrap}>
-                <div>{this.state.time}</div>
                 <img style={styles.image} src={this.state.url}/>
             </div>
         );
     }
 }
-
 
 let styles = {
     wrap:{
