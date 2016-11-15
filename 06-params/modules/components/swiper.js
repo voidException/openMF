@@ -43,7 +43,7 @@ export  default class Swiper extends React.Component {
     componentWillUnmount(){
         //clearInterval(this.timer);
         clearInterval(this.swiper);
-        console.log('销毁this.swiper定时器');
+        //console.log('销毁this.swiper定时器');
     }
     change(){
         let tag=1;
@@ -78,6 +78,7 @@ export  default class Swiper extends React.Component {
         return (
             <div id="wrap"   style={styles.wrap}>
                 <img style={styles.image} src={this.state.url}/>
+
             </div>
         );
     }

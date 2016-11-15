@@ -12,7 +12,7 @@ export  default class Bottom extends React.Component{
 
     render() {
         return (
-            <div style={styles.contain}>
+            <footer style={styles.contain}>
                  <div style={styles.containUp}>
                     <div>合作伙伴:蛛网风控</div>
                     <div>联系我们:400-8604-001</div>
@@ -23,7 +23,7 @@ export  default class Bottom extends React.Component{
                       Copyright © 2015-2016 北京蜜蜂汇金科技有限公司 京ICP备14022439号-1 京ICP证151113号 京公网安备11010802015816号
                     </p>
                 </div>
-            </div>
+            </footer>
         );
     }
 }
@@ -31,7 +31,7 @@ export  default class Bottom extends React.Component{
 
 let styles = {
     contain:{
-        position:'absolute',
+        position:'fixed',
         bottom:10,
         left:10,
         display:'flex',
@@ -48,13 +48,15 @@ let styles = {
         justifyContent:'space-around',
         alignItem:'center',
         width: width,
-        color:'#fff'
+        color:'#fff',
+        fontSize:12
     },
     containDown:{
         display:'flex',
         alignItem:'center',
         justifyContent:'center',
-        color:'#fff'
+        color:'#fff',
+        fontSize:12
     }
 
 }
