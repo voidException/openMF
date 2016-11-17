@@ -54,7 +54,7 @@ export  default class App  extends Component{
         return (
             <div style={styles.wrapperStyle} className="app">
 
-                <div style={styles.divStyle} className="app">
+                <div style={styles.divStyle} className="header" >
                     <div style={styles.bees}>
                         <img style={{height:20,width:20,}} src="./modules/images/beens.png" />
                         <span>蜜蜂开放平台</span>
@@ -92,10 +92,9 @@ export  default class App  extends Component{
                         }
 
                     </div>
-
                 </div>
-                {this.props.children}
-                <div style={{marginTop:100}}>
+                <div className="middle">{this.props.children}</div>
+                <div style={{marginTop:100,}} className="bottom">
                     <Bottom />
                 </div>
             </div>
@@ -107,10 +106,11 @@ export  default class App  extends Component{
 
 let styles = {
     wrapperStyle:{
-
         display: 'flex',
         flexDirection:'column',
         //width: width,
+        alignItems:'center',
+        justifyContent:'space-between'
     },
     divStyle:{
         display: 'flex',

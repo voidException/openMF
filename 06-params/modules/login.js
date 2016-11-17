@@ -50,16 +50,25 @@ export default  class Login extends Component {
     render() {
         return(
             <div style={styles.container}>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <div style={styles.useraccount}>
-                        <label style={styles.lapwdbel}>用户名:</label>
+                <form onSubmit={this.handleSubmit.bind(this)} >
+                    <div style={styles.beefe}>
+                        <img src="./modules/images/beefe.png" style={styles.beefeimg} />
+                    </div>
+                    <div style={{marginTop:20}}>
+                        <div style={styles.label}>用户名</div>
                         <input ref="email" placeholder="请输入您的用户名" style={styles.account}/>
                     </div>
-                    <div>
-                        <label style={{fontWeight:'bold',paddingRight:3}}>密&nbsp;&nbsp; 码:</label>
+                    <div style={{marginTop:20}}>
+                        <div style={styles.label}>密 码</div>
                         <input ref="pass" placeholder="请输入您的密码" style={styles.account}/>
                     </div>
-                    <button type="submit" style={styles.login}>登录</button>
+                    <div style={styles.loginBottom}>
+                         <button type="submit" style={styles.login}>登录</button>
+                        <div style={styles.fr}>
+                             <div style={{marginRight:5,cursor:'pointer',color:'#000',fontSize:14}}>忘记密码?</div>
+                             <div style={{cursor:'pointer',color:'#000',fontSize:14}}>新用户注册</div>
+                        </div>
+                    </div>
                 </form>
             </div>
         );
@@ -73,36 +82,50 @@ Login.contextTypes = {
 let styles = {
     container:{
         display:'flex',
-        flex:1,
         flexDirection:'column',
         justifyContent:'center',
         alignItems:'center',
-        height:600
+        height:400,
+        width:400,
+        marginTop:50,
+        backgroundColor:'#FAFFBD',
     },
-    useraccount:{
+    beefe:{
         display:'flex',
         flexDirection:'row',
-        fontWeight:'bold',
-        height:40,
-        width:400,
         alignItems:'center',
+        justifyContent:'center',
+    },
+    beefeimg:{
+        width:60,
+        height:60
+    },
+    label:{
+        marginBottom:10,
+        fontSize:14
     },
     account:{
-        height:30,
-        width:300
+        height:25,
+        width:300,
     },
-    //label:{
-    //    height:30,
-    //    display:'flex',
-    //    flexDirection:'row',
-    //    alignItems:'center',
-    //    justifyContent:'center',
-    //    border:'1px solid black',
-    //
-    //},
     login:{
-        width:360,
+        width:60,
+        height:25,
+        borderRadius:3,
+        backgroundColor:'#5091FF',
+        color:'#fff'
+    },
+    loginBottom:{
         height:40,
-        marginTop:20
+        marginTop:20,
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between'
+    },
+    fr:{
+        display:'flex',
+        flexDirection:'row'
     }
+
 }

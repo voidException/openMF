@@ -5,8 +5,8 @@ export default  class Center extends Component{
 
   render() {
     return (
-        <div style={styles.container}>
-          <div style={styles.left}>
+        <div style={styles.container} className="center">
+          <div style={styles.left} className="centerLeft">
               <div style={styles.accountWrap}>
                 <img style={{height:25,width:25,marginRight:10}} src="./modules/images/account.png" />
                 <Link style={styles.linkBigTop} to="/center/account">账户管理</Link>
@@ -67,8 +67,8 @@ let styles={
     flexDirection:'column',
     alignItems:'center',
     backgroundColor:'#EAEEF3',
-    height:600,
-    marginBottom:300
+    //height:600,
+    //marginBottom:300
   },
   accountWrap:{
     display:'flex',

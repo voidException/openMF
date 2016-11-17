@@ -16,7 +16,25 @@ export  default class Swiper extends React.Component {
             time:maxTime
         };
     }
+    circleClick(tag){
+        let urlOne="./modules/images/p1.jpg";
+        let urlTwo="./modules/images/p3.jpg";
+        let urlThree="./modules/images/p4.jpg";
 
+        if (tag==1){
+            this.setState({
+                url: urlOne,
+            });
+        }else if (tag==2){
+            this.setState({
+                url: urlTwo,
+            });
+        }else {
+            this.setState({
+                url: urlThree,
+            });
+        }
+    }
     componentWillMount() {
         //console.log(this.props);
         //console.log(this.props.params.id);
@@ -28,17 +46,6 @@ export  default class Swiper extends React.Component {
         this.change();
     }
 
-    //countDown() {
-    //    let time = maxTime;
-    //    this.timer = setInterval(() => {
-    //        this.setState({time: --time});
-    //        if (time === 0) {
-    //            clearInterval(this.timer);
-    //            //this.setState({controlVerifyCode:true});
-    //            console.log('end time count')
-    //        }
-    //    }, 1000);
-    //}
 
     componentWillUnmount(){
         //clearInterval(this.timer);
@@ -76,9 +83,13 @@ export  default class Swiper extends React.Component {
     }
     render() {
         return (
-            <div id="wrap"   style={styles.wrap}>
-                <img style={styles.image} src={this.state.url}/>
-
+            <div id="wrap"   style={styles.wrap} className="imgWrapper">
+                <img  src={this.state.url} className="img"/>
+               <div style={styles.circleWrapper}>
+                   <div style={styles.circle}  onClick={this.circleClick.bind(this,1)}></div>
+                   <div style={styles.circle}  onClick={this.circleClick.bind(this,2)}></div>
+                   <div style={styles.circle}  onClick={this.circleClick.bind(this,3)}></div>
+               </div>
             </div>
         );
     }
@@ -86,12 +97,27 @@ export  default class Swiper extends React.Component {
 
 let styles = {
     wrap:{
-        width:width,
-        height:height-300,
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'flex-end',
+        marginTop:20
     },
-    image:{
-        width:width,
-        height:600
+
+    circle:{
+        width:20,
+        height:20,
+        borderRadius:10,
+        backgroundColor:'#43AC43',
+        marginRight:5
+    },
+    circleWrapper:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
+        zIndex:10,
+        marginTop:-30
     }
 }
 
