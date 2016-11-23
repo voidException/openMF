@@ -4,7 +4,7 @@ import Swiper from './components/swiper';
 import Bottom from './components/Bottom';
 import { Link } from 'react-router'
 let width= document.documentElement.clientWidth;
-//  <div><Link to="/about/messages/:id">hello</Link></div>
+
 export  default class App  extends Component{
     constructor(props){
         super(props);
@@ -36,8 +36,6 @@ export  default class App  extends Component{
                 });
             }
         },100)
-
-
     }
     componentWillUnmount(){
         //clearInterval(this.timer);
@@ -66,35 +64,39 @@ export  default class App  extends Component{
                         </div>
                         <div style={styles.head}>
 
-                            <a href="http://localhost:8080/destination/serviceDetail_1.html" target="_blank" style={styles.link}> API</a>
+                            <Link to="/api" style={styles.link} >API</Link>
                         </div>
                         <div style={styles.head}>
 
                             <Link to="/doc"  style={styles.link}>文档</Link>
                         </div>
-                        <div style={styles.head}>
+                        <div>
 
                             <Link to="/center"  style={styles.link}>商户中心</Link>
                         </div>
                     </div>
-                    <div style={styles.login}>
+                    <div onMouseOut={this.imgClick.bind(this)} style={styles.login}>
                         <div style={styles.loginleft}>
                             <Link to="/login" style={styles.links}>
                                 {this.state.tag==1?
                                     this.state.denglu
-                                    :this.state.userid
+                                    :
+                                    this.state.userid
                                 }
                             </Link>
-                           <img style={{height:20,width:25,cursor:'pointer'}} onClick={this.imgClick.bind(this)} src="./modules/images/arrow.png" />
+                           <img  onClick={this.imgClick.bind(this)}style={{height:20,width:25,cursor:'pointer'}}  src="./modules/images/arrow.png"  />
                         </div>
-                        {
-                            this.state.toggle==true ? <div><Link to="/logout" style={styles.logout}>退出</Link></div>:null
-                        }
-
+                        <div>
+                            {this.state.toggle==true ?
+                                <div><Link to="/logout" style={styles.logout}>退出</Link></div>
+                                :
+                                null
+                           }
+                        </div>
                     </div>
                 </div>
                 <div className="middle">{this.props.children}</div>
-                <div style={{marginTop:100,}} className="bottom">
+                <div className="bottomWrapper">
                     <Bottom />
                 </div>
             </div>
@@ -114,6 +116,7 @@ let styles = {
     },
     divStyle:{
         display: 'flex',
+        flex:1,
         flexDirection:'row',
         justifyContent:'space-around',
         alignItems:'center',
@@ -132,7 +135,7 @@ let styles = {
     head:{
         flexDirection:'row',
         display:'flex',
-        marginRight:70
+        marginRight:120
     },
     login:{
         position:'relative',

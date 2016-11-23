@@ -137,8 +137,8 @@ export default  class Service extends Component {
                                 return(
                                     <tr key={index} style={{border: '1px solid #DDDDDD',color:'#959595',height:30}} >
                                         <td style={styles.td}>{item.apiName}</td>
-                                        <td style={styles.td}>{item.apiZnName}</td>
-                                        <td style={styles.td}>{item.apiType}</td>
+                                        <td style={styles.td1}>{item.apiZnName}</td>
+                                        <td style={styles.td2}>{item.apiType}</td>
                                     </tr>
                                 )
                             })
@@ -162,7 +162,22 @@ let styles = {
         flexDirection:'column',
     },
     td:{
-        border:'0.5px solid #DDDDDD'
+        border:'0.5px solid #DDDDDD',
+        fontSize:13,
+        paddingLeft:10,
+        width:400
+    },
+    td1:{
+        border:'0.5px solid #DDDDDD',
+        fontSize:13,
+        paddingLeft:10,
+        width:300
+    },
+    td2:{
+        border:'0.5px solid #DDDDDD',
+        fontSize:13,
+        paddingLeft:10,
+        width:50
     },
     bottom:{
         display:'flex',

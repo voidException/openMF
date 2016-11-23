@@ -6,7 +6,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, hashHistory,browserHistory,IndexRoute,Redirect } from 'react-router'
 import App from './modules/App';
-import Doc from './modules/Doc'
+import Doc from './modules/Doc';
+import API from './modules/API'
 import Center from './modules/Center'
 import Swiper from './modules/components/swiper';
 import Account from  './modules/components/account';
@@ -17,6 +18,21 @@ import Login from  './modules/Login';
 let Door=App;
 //let Door=Swiper;
 //let  Door=APIList;
+import { createDevTools } from 'redux-devtools';
+import LogMonitor from 'redux-devtools-log-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+
+console.log(createDevTools);
+console.log(LogMonitor);
+console.log(DockMonitor);
+console.log(createStore)
+console.log(combineReducers);
+console.log(Provider);
+console.log(syncHistoryWithStore);
+console.log(routerReducer);
 
 function requireAuth(nextState, replaceState) {
     //真尼玛就是个坑货
@@ -40,6 +56,7 @@ function enterFilter(nextState, replaceState){
 function logout(){
     sessionStorage.clear()
 }
+
 render((
     <Router history={hashHistory}>
         <Route path="/" component={Door}  >
@@ -47,6 +64,7 @@ render((
             <Route path="headPage" component={Swiper} />
             <Route path="logout" component={Swiper} onEnter={logout} />
             <Route path="doc" component={Doc} />
+            <Route path="api" component={API} />
             <Route path="center" component={Center}  onEnter={requireAuth}>
                 <IndexRoute component={Account} />
                 <Route path="account" component={Account}/>

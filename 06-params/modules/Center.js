@@ -43,7 +43,8 @@ let styles={
     backgroundColor:'#F5F7FA',
     display:'flex',
     flexDirection:'row',
-    justifyContent:'center'
+    justifyContent:'center',
+    marginBottom:480
   },
   linkBigTop:{
     color:'#ffffff',

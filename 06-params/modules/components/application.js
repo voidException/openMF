@@ -102,7 +102,7 @@ export default  class Application extends Component {
                                 return(
                                     <tr key={index} style={{border: '1px solid #DDDDDD',color:'#959595',height:30}} >
                                         <td style={styles.td}>{item.appName}</td>
-                                        <td style={styles.td}>{item.appKey}</td>
+                                        <td style={styles.td1}>{item.appKey}</td>
                                         <td style={styles.td}>{item.appSecret}</td>
                                     </tr>
                                 )
@@ -124,6 +124,21 @@ let styles = {
         flexDirection:'row',
     },
     td:{
-        border:'0.5px solid #DDDDDD'
-    }
+        border:'0.5px solid #DDDDDD',
+        fontSize:12,
+        paddingLeft:10,
+        width:300,
+    },
+    td1:{
+        border:'0.5px solid #DDDDDD',
+        fontSize:12,
+        paddingLeft:10,
+        width:200
+    },
+    td2:{
+        border:'0.5px solid #DDDDDD',
+        fontSize:12,
+        paddingLeft:10,
+        width:300
+    },
 }

@@ -27,7 +27,7 @@ export default  class Login extends Component {
         };
         let response=UploadFile(option);
         response.then(resp=> {
-            console.log(resp);
+           // console.log(resp);
             if(resp!==null){
                 sessionStorage.setItem("userid",resp.apistoreUser.userId);
                 sessionStorage.setItem("mobile",resp.apistoreUser.mobile);
@@ -87,7 +87,8 @@ let styles = {
         alignItems:'center',
         height:400,
         width:400,
-        marginTop:50,
+        marginTop:100,
+        marginBottom:320,
         backgroundColor:'#FAFFBD',
     },
     beefe:{

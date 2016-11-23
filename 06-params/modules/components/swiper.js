@@ -101,7 +101,8 @@ let styles = {
         flexDirection:'column',
         alignItems:'center',
         justifyContent:'flex-end',
-        marginTop:20
+        marginTop:10,
+        marginBottom:180
     },
 
     circle:{

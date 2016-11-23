@@ -4,8 +4,13 @@
     <meta charset=utf-8/>
     <title>蛛网风控开放平台</title>
     <link rel=stylesheet href=./index.css>
+    <script>
+        window.onresize = function(){
+           console.log(document.documentElement.clientWidth);
+        }
+    </script>
 </head>
-
-<div id=app style="width: 100%"></div>
-
+<body style="margin: 0px">
+<div id=app></div>
+</body>
 <script src="bundle.js"></script>

@@ -12,7 +12,7 @@ export  default class Bottom extends React.Component{
 
     render() {
         return (
-            <footer style={styles.contain} className="bottom">
+            <footer style={styles.contain} className="bottomWrapper">
                  <div style={styles.containUp} className="bottom">
                     <div>合作伙伴:蛛网风控</div>
                     <div>联系我们:400-8604-001</div>
@@ -32,10 +32,11 @@ export  default class Bottom extends React.Component{
 let styles = {
     contain:{
         //position:'fixed',
-        position:'absolute',
-        bottom:10,
-        left:10,
+        //position:'absolute',
+        //bottom:0,
+        //left:0,
         display:'flex',
+        flex:1,
         flexDirection:'column',
         alignItem:'center',
         justifyContent:'center',
