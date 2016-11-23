@@ -9,18 +9,17 @@ import React,{Component}from 'react'
 import { Link } from 'react-router'
 import UploadFile from '../uploadFile';
 import { UrlApp} from '../url';
+
 let width= document.documentElement.clientWidth;
-//let defaultUrl='http://172.16.32.70:8080/openapi/account/app/query/';
 let defaultUrl=UrlApp;
+let page=1;
 export default  class Application extends Component {
     // 构造
       constructor(props) {
         super(props);
         // 初始状态
         this.state = {
-            apiList:null, //排列表
-            apiType:null, //api类型
-            apiDescription:null, //api描述
+            pages:1,
             arrays:[{
                 "id":1,
                 "appName":"测试APP",
@@ -69,12 +68,7 @@ export default  class Application extends Component {
             console.log(JSON.stringify(resp));
             if(resp!==null){
                 this.setState({
-                    creatorName:resp.creator,
-                    description:resp.description,
-                    mail:resp.mail,
-                    name:resp.name,
-                    updateTime:resp.updateTime,
-                    phone:resp.phone,
+                    pages:resp.pages,
                     arrays:resp.list,
                 });
             }
@@ -82,7 +76,61 @@ export default  class Application extends Component {
             console.log(err);
         });
     }
+    clickMeUp(){
+        if (page==1){
+            return
+        }
+        page--;
+        let defaultParam=page;
+        let  url=defaultUrl+defaultParam;
+        let userid=sessionStorage.getItem("userid");
+        let formData=new FormData();
+        formData.append("userid",userid);
+        let option={
+            url:url,
+            body:formData
+        };
+        let response=UploadFile(option);
+        response.then(resp=> {
+           console.log(JSON.stringify(resp));
+            if(resp!==null){
 
+                this.setState({
+                    pages:resp.pages,
+                    arrays:resp.list,
+                });
+            }
+        }).catch(err=>{
+            console.log(err);
+        });
+    }
+    clickMeDown(){
+
+        page++;
+
+        let defaultParam=page;
+        let  url=defaultUrl+defaultParam;
+        console.log(url);
+        let userid=sessionStorage.getItem("userid");
+        let formData=new FormData();
+        formData.append("userid",userid);
+        let option={
+            url:url,
+            body:formData
+        };
+        let response=UploadFile(option);
+        response.then(resp=> {
+            console.log(JSON.stringify(resp));
+            if(resp!==null){
+                this.setState({
+                    pages:resp.pages,
+                    arrays:resp.list,
+                });
+            }
+        }).catch(err=>{
+            console.log(err);
+        });
+    }
     render() {
         return(
             <div style={styles.contain}>
@@ -110,6 +158,11 @@ export default  class Application extends Component {
                         }
                         </tbody>
                     </table>
+                </div>
+                <div style={styles.bottom}>
+                    <button type="button"  onClick={this.clickMeUp.bind(this)} >上一页</button>
+                    <button type="button"  onClick={this.clickMeDown.bind(this)}>下一页</button>
+                    <div style={styles.page}>共{this.state.pages}页</div>
                 </div>
             </div>
         );
@@ -141,4 +194,13 @@ let styles = {
         paddingLeft:10,
         width:300
     },
+    bottom:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'center',
+        marginTop:10,
+    },
+    page:{
+        marginLeft:10
+    }
 }

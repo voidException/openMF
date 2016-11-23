@@ -1,10 +1,10 @@
 import React ,{Component}from 'react';
+import { Link } from 'react-router';
+
 import NavLink from './NavLink';
 import Swiper from './components/swiper';
 import Bottom from './components/Bottom';
-import { Link } from 'react-router'
 let width= document.documentElement.clientWidth;
-
 export  default class App  extends Component{
     constructor(props){
         super(props);
