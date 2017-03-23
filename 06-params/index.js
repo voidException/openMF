@@ -24,15 +24,9 @@ import DockMonitor from 'redux-devtools-dock-monitor';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-
-console.log(createDevTools);
-console.log(LogMonitor);
-console.log(DockMonitor);
-console.log(createStore)
-console.log(combineReducers);
-console.log(Provider);
-console.log(syncHistoryWithStore);
-console.log(routerReducer);
+import thunk from 'redux-thunk';
+import * as reducers from './modules/reducers/index';
+import configureStore from './modules/store/configureStore';
 
 function requireAuth(nextState, replaceState) {
     //真尼玛就是个坑货
@@ -56,23 +50,27 @@ function enterFilter(nextState, replaceState){
 function logout(){
     sessionStorage.clear()
 }
-
+const store =configureStore();
 render((
-    <Router history={hashHistory}>
-        <Route path="/" component={Door}  >
-            <IndexRoute component={Swiper} />
-            <Route path="headPage" component={Swiper} />
-            <Route path="logout" component={Swiper} onEnter={logout} />
-            <Route path="doc" component={Doc} />
-            <Route path="api" component={API} />
-            <Route path="center" component={Center}  onEnter={requireAuth}>
-                <IndexRoute component={Account} />
-                <Route path="account" component={Account}/>
-                <Route path="info" component={Info}/>
-                <Route path="application" component={Application}/>
-                <Route path="service" component={Service}/>
-            </Route>
-            <Route path="login" component={Login} onEnter={enterFilter} />
-        </Route>
-    </Router>
+        <Provider  store={store}>
+            <div>
+                <Router history={hashHistory}>
+                    <Route path="/" component={Door}  >
+                        <IndexRoute component={Swiper} />
+                        <Route path="headPage" component={Swiper} />
+                        <Route path="logout" component={Swiper} onEnter={logout} />
+                        <Route path="doc" component={Doc} />
+                        <Route path="api" component={API} />
+                        <Route path="center" component={Center}  onEnter={requireAuth}>
+                            <IndexRoute component={Account} />
+                            <Route path="account" component={Account}/>
+                            <Route path="info" component={Info}/>
+                            <Route path="application" component={Application}/>
+                            <Route path="service" component={Service}/>
+                        </Route>
+                        <Route path="login" component={Login} onEnter={enterFilter} />
+                    </Route>
+                </Router>
+            </div>
+        </Provider>
 ), document.getElementById('app'))
